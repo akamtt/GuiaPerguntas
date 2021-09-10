@@ -1,44 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include ("partials/header.ejs"); %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guia Perguntas</title>
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  <body>
 
-<body>
-  <nav class="navbar navbar-light bg-dark">
-    <a class="navbar-brand" href="/">
-      <img id="navlogo" src="/img/guia.png">
-    </a>
-  </nav>
+    <%- include("partials/navbar.ejs"); %>
 
-  <div class="container">
-    <div class="card" id="formulario-pergunta">
-      <div class="card-header">
-        <h3>Realizar Perguntas</h3>
+      <div class="container">
+        <div class="card" id="formulario-pergunta">
+          <div class="card-header">
+            <h3>Realizar Perguntas</h3>
+          </div>
+          <div class="card-body">
+            <form method="POST" action="/salvarpergunta">
+              <label>Título</label>
+              <input type="text" placeholder="Título" class="form-control" name="titulo">
+              <br>
+              <label>Descrição</label>
+              <textarea placeholder="Descreva sua pergunta aqui" class="form-control" name="descricao"></textarea>
+              <br>
+              <button class="btn btn-dark">Perguntar</button>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <form>
-          <label>Título</label>
-          <input type="text" placeholder="Título" class="form-control">
-          <br>
-          <label>Descrição</label>
-          <textarea placeholder="Descreva sua pergunta aqui" class="form-control"></textarea>
-          <br>
-          <button class="btn btn-success">Perguntar</button>
-        </form>
-      </div>
-    </div>
+  </body>
 
-  </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-<script src="/js/bootstrap.min.js"></script>
-
-</html>
+  <%- include ("partials/footer.ejs"); %>
