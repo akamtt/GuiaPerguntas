@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const connection = require('./database/database');
-const perguntaModel = require('./database/Pergunta');
+const Pergunta = require('./database/Pergunta');
 
 connection
   .authenticate()
@@ -10,6 +10,7 @@ connection
   })
   .catch((msgErro) => {});
 
+//SETANDO EJS COMO VIEW ENGINE
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
@@ -19,8 +20,13 @@ app.use(express.json());
 //ROTAS
 
 app.get('/', (req, res) => {
-  res.render('index');
+  Pergunta.findAll({ raw: true }).then((perguntas) => {
+    res.render('index', {
+      perguntas: perguntas,
+    });
+  });
 });
+
 app.get('/perguntar', (req, res) => {
   res.render('perguntar');
 });
@@ -28,9 +34,12 @@ app.get('/perguntar', (req, res) => {
 app.post('/salvarpergunta', (req, res) => {
   var titulo = req.body.titulo;
   var descricao = req.body.descricao;
-  res.send(
-    'Formulário Recebido! Título: ' + titulo + ' ' + 'Descrição:  ' + descricao,
-  );
+  Pergunta.create({
+    titulo: titulo,
+    descricao: descricao,
+  }).then(() => {
+    res.redirect('/');
+  });
 });
 
 app.listen(8080, () => {

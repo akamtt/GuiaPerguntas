@@ -15,3 +15,5 @@ const Pergunta = connection.define('perguntas', {
 
 //NÃO FORÇAR A CRIAR UMA TABELA JA CRIADA.
 Pergunta.sync({ force: false }).then(() => {});
+
+module.exports = Pergunta;
