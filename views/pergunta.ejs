@@ -1,9 +1,5 @@
 <%- include("partials/header.ejs"); %>
 
-
-
-
-
   <body>
     <%- include("partials/navbar.ejs"); %>
       <div class="container">
@@ -15,6 +11,10 @@
           <%= pergunta.descricao %>
         </p>
         <hr>
+        <form>
+          <textarea placeholder="Digite sua resposta" class="form-control" name="corpo"></textarea><br>
+          <button type="submit" class="btn btn-outline-dark">Responder</button>
+        </form>
       </div>
   </body>
 
