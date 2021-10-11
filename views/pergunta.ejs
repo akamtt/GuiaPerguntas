@@ -11,10 +11,23 @@
           <%= pergunta.descricao %>
         </p>
         <hr>
-        <form>
+        <form method="POST" action="/responder">
           <textarea placeholder="Digite sua resposta" class="form-control" name="corpo"></textarea><br>
+          <input type="hidden" name="pergunta" value="<%= pergunta.id %>">
           <button type="submit" class="btn btn-outline-dark">Responder</button>
         </form>
+        <hr>
+        <h3>Respostas</h3>
+        <hr>
+        <% respostas.forEach(resposta=> {%>
+          <div class="card">
+            <div class="card-body">
+              <p>
+                <%=resposta.corpo%>
+              </p>
+            </div>
+          </div>
+          <% }) %>
       </div>
   </body>
 
